@@ -5,15 +5,14 @@ function LoginForm({Login , error}) {
 
 
     const submitHandler = e => {
-        // e.prevetDefault();
         Login(details);
     }
 
   return (
     <form onSubmit={submitHandler}>
         <div className='form-inner'>
-            <h2>Login</h2>
-            {(error != "") ? (<div className="error">{error}</div> ) : "" }
+            <h2>Chemometrics Data Analyzer</h2>
+            <div>{(error != "") ? (<div className="error">{error}</div> ) : "" }</div>
             <div className="form-group">
                 <label htmlFor="name">Username:</label>
                 <input type="text" name="username" id="username" onChange={e => setDetails({...details, username: e.target.value})} value={details.username}/>
@@ -22,8 +21,10 @@ function LoginForm({Login , error}) {
                 <label htmlFor="password">Password:</label>
                 <input type="password" name="password" id="password" onChange={e => setDetails({...details, password : e.target.value})} value={details.password}/>
             </div>
+            <div className="form-buttons">
             <input type="submit" value="Login"/>
-
+            {/* <input type="button" value="Reset" />   */}
+            </div>
         </div>
     </form>
   );
