@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import LoginForm from './components/LoginForm';
+import WelcomePage from './components/WelcomePage';
 
 function App() {
   const adminUser = {
@@ -34,10 +35,11 @@ function App() {
   return (
     <div className="App">
     {(user.username != "") ? (
-      <div className='welcome'>
-        <h2>Welcome <span>{user.username}</span>,</h2>
-        <button onClick={Logout}>Logout</button>
-        </div>
+      // <div className='welcome'>
+      //   <h2>Welcome <span>{user.username}</span>,</h2>
+      //   <button onClick={Logout}>Logout</button>
+      //   </div>
+      <WelcomePage />
     ) : (
       <LoginForm Login={Login} error={error} />
     ) }
