@@ -5,8 +5,8 @@ export const WelcomePage = () => {
   const navigate = useNavigate()
   return (
     <>
-      <div>Home Page</div>
-      <button onClick={() => navigate('order-summary')}>Place order</button>
+      <h1>Home Page</h1>
+      <div>Welcome User,</div>
     </>
   )
 }

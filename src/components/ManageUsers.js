@@ -6,7 +6,6 @@ export const ManageUsers = () => {
 	return (
 	  <>
 		<div>ManageUsers</div>
-		{/* <button onClick={() => navigate('order-summary')}>Place order</button> */}
 	  </>
 	)
   }
