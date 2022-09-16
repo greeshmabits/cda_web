@@ -7,11 +7,15 @@ export const AnalyzeData = () => {
     <>
       <form>
         <h1>AnalyzeData</h1>
+        <br></br>
         <div>
             <label>Data sample File :</label>
             <input type="file" id="fileupload" />
-          <label>Data Model to Apply :</label>
-          <input type="text" placeholder='PCA Model 1' />
+            </div>
+            <br></br>
+            <div>
+            <label>Data Model to Apply :</label>
+            <input type="text" placeholder='PCA Model 1' />
 
         <button type='submit' >Analyze</button>
         </div>

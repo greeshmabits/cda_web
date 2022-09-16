@@ -18,7 +18,7 @@ export const ManageUsers = () => {
 		)
 	}
 	return (
-	  <>
+	  <form>
 		<h1>ManageUsers</h1>
 		<ReactBootStrap.Table striped bordered hover>
       <thead>
@@ -31,7 +31,12 @@ export const ManageUsers = () => {
 		{users.map(renderUser)}
       </tbody>
     </ReactBootStrap.Table>
-	  </>
+	<div className='buttons'>
+		<button name='add'>Add</button>
+		<button name='edit'>Edit</button>
+		<button name='delete'>Delete</button>
+	</div>
+	  </form>
 	)
   }
 

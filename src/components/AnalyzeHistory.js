@@ -53,8 +53,9 @@ const CustomMenu = React.forwardRef(
   );
 
 return (
-	<div>
+	<form>
 	<h1>AnalyzeHistory.</h1>
+	<div  className="analyze-history-dropbx">
 	<Dropdown>
 	<Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
       Enter file name
@@ -69,10 +70,11 @@ return (
       <Dropdown.Item eventKey="1">Test-file3.csv</Dropdown.Item>
     </Dropdown.Menu>
     </Dropdown>
-	<form>
-		<button>View Results</button>
-	</form>
 	</div>
+	{/* <form> */}
+		<button className='bottom-center-btn'>View Results</button>
+	</form>
+	
 )
 }
 
