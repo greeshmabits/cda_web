@@ -28,6 +28,9 @@ export const Navbar = () => {
       <NavLink to='/manageUsers' style={navLinkStyles}>
         ManageUsers
       </NavLink>
+      <NavLink to='/loginForm' style={navLinkStyles}>
+        Logout
+      </NavLink>
       {/* <NavLink to='/products' style={navLinkStyles}>
         AnalyzeHistory
       </NavLink>

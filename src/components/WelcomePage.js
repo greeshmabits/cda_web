@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import React from 'react';
+import Logout from '../App';
 
-export const WelcomePage = () => {
+export const WelcomePage = ({username}) => {
   const navigate = useNavigate()
+
   return (
     <>
       <h1>Chemometric Data Analyzer</h1>
-      <h2>Welcome User,</h2>
+      <h2>Welcome {username},</h2>
       <form className='welcome-data-container'>
       
       
@@ -20,7 +22,10 @@ the sample data collected using Spectroscopy techniques by applying the chemomet
 processes. The outcome of the analysis is a set of quality and composition parameters as defined in 
 the chemometric analytical models along with their measured values in the sample. This project can 
 be categorized under the Data Science and Analytics domain.</p>
+<br></br>
+<button onClick={Logout}>Logout</button>
 </form>
+
     </>
   )
 }
