@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import React from 'react';
 import * as ReactBootStrap from "react-bootstrap"
-import Table from 'react-bootstrap/Table';
+
 
 export const ManageDataModels = () => {
 	const navigate = useNavigate()
