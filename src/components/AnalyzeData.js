@@ -13,10 +13,11 @@ export const AnalyzeData = () => {
             <input type="file" id="fileupload" />
             </div>
             <br></br>
+            <hr/>
             <div>
             <label>Data Model to Apply :</label>
             <input type="text" placeholder='PCA Model 1' />
-
+            <hr />
         <button type='submit' >Analyze</button>
         </div>
       </form>
