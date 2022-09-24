@@ -4,7 +4,6 @@ import {Button,Popconfirm,Table} from "antd";
 import {EditTwoTone,DeleteTwoTone} from '@ant-design/icons'
 import useFetch from './util/useFetch';
 import axios from 'axios';
-import AddUser from './user/AddUser';
 
 
 export const ManageUsers = () => {
@@ -36,7 +35,7 @@ export const ManageUsers = () => {
 			title: 'Actions',
 			render : (_,record) => {
 				return <>
-				<EditTwoTone />
+				<EditTwoTone onClick={(e) =>{editUser(record.username,e)}}/>
 				<Popconfirm title ="Click Ok to confirm deletion ?" onConfirm={(e) => deleteUser(record.username,e)}>
 				<DeleteTwoTone/>
 				</Popconfirm>
@@ -45,9 +44,15 @@ export const ManageUsers = () => {
 		},
 	]
 
+	const editUser = (username,e) => {
+		e.preventDefault();
+		navigate(`/user/edit/${username}`, {replace: true});
+
+	}
+
 	const deleteUser = (userNameToDelete,e) =>{
 		e.preventDefault();
-		axios.delete(' http://52.66.217.199:9080/user/'+userNameToDelete+'').then(res => alert("Deleted user "+userNameToDelete+"successfully!")).catch(err => console.log(err))
+		axios.delete(`http://52.66.217.199:9080/user/${userNameToDelete}`).then(res => alert("Deleted user "+userNameToDelete+"successfully!")).catch(err => console.log(err))
 
 	}
 
