@@ -13,7 +13,7 @@ export const EditUser = () => {
 
     const submitHandler = (e) => {
 		e.preventDefault();
-		axios.put(`http://52.66.217.199:9080/user/${username}`, details).then(res => console.log('Posting data',res)).catch(err => console.log(err));
+		axios.put(`http://52.66.217.199:9080/user/${username}`, details).then(res => console.log('Editing data',res)).catch(err => console.log(err));
         navigate("/manageUsers");
 	}
 
