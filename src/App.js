@@ -9,6 +9,7 @@ import { ManageDataModels } from './components/ManageDataModels'
 import { ManageUsers } from './components/ManageUsers'
 import { NoMatch } from './components/NoMatch'
 import AddUser from './components/user/AddUser';
+import { EditUser } from './components/user/EditUser';
 import 'antd/dist/antd.min.css';
 
 
@@ -54,6 +55,7 @@ function App() {
         <Route path='/manageDataModels' element={<ManageDataModels />} />
         <Route path='/manageUsers' element={<ManageUsers />} />
         <Route path='/user/add' element={<AddUser />} />
+        <Route path='/user/edit/:username' element={<EditUser />} />
         <Route path='/loginForm' element={<LoginForm />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
