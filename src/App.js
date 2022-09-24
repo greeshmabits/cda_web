@@ -8,6 +8,7 @@ import { AnalyzeHistory } from './components/AnalyzeHistory'
 import { ManageDataModels } from './components/ManageDataModels'
 import { ManageUsers } from './components/ManageUsers'
 import { NoMatch } from './components/NoMatch'
+import AddUser from './components/user/AddUser';
 import 'antd/dist/antd.min.css';
 
 
@@ -52,6 +53,7 @@ function App() {
         <Route path='/analyzeHistory' element={<AnalyzeHistory />} />
         <Route path='/manageDataModels' element={<ManageDataModels />} />
         <Route path='/manageUsers' element={<ManageUsers />} />
+        <Route path='/user/add' element={<AddUser />} />
         <Route path='/loginForm' element={<LoginForm />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
