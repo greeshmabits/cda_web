@@ -51,13 +51,16 @@ export const ManageUsers = () => {
 
 	}
 
+	const navigateToAddUser = () => {
+		navigate('/user/add', {replace: true});
+	}
 
 
 	return (
 	  <>
 		<h1>ManageUsers</h1>
 		<br></br>
-		<Button size='large' type='primary' align='center' onClick={<AddUser/>}>Add a new user</Button>
+		<Button size='large' type='primary' align='center' onClick={navigateToAddUser}>Add a new user</Button>
 		<br></br>
 		<Table columns={columns} dataSource={data}></Table>
 	  </>
