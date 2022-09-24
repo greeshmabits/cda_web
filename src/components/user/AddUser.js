@@ -1,5 +1,6 @@
 import React ,{useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import {Button} from "antd";
 import axios from 'axios';
 
 const AddUser = () => {
@@ -9,13 +10,17 @@ const AddUser = () => {
     const submitHandler = (e) => {
 		e.preventDefault();
 		axios.post('http://52.66.217.199:9080/users/', details).then(res => console.log('Posting data',res)).catch(err => console.log(err));
-        navigate.push("/manageUsers");
+        navigate("/manageUsers");
+	}
+
+    const navigateToManageUsers = () => {
+		navigate('/manageUsers');
 	}
 
   return (
     <div>
         <h1>Add User</h1>
-        <form onSubmit={submitHandler}>
+        <form>
         <div className='form-inner'>
             <h2>Enter the details to add user</h2>
             <div className="form-group">
@@ -43,8 +48,8 @@ const AddUser = () => {
                 <input type="password" name="password" id="password" onChange={e => setDetails({...details, password : e.target.value})} value={details.password}/>
             </div>
             <div className="form-buttons">
-            <input type="submit" value="Add User"/>
-            {/* <input type="button" value="Reset" />   */}
+            <Button size='large' type='primary' align='center' margin-right='10px' onClick={submitHandler}>Add a new user</Button>
+            <Button size='large' align='center' margin-right='10px' margin-left='10px' onClick={navigateToManageUsers}>Cancel</Button>
             </div>
         </div>
     </form>
