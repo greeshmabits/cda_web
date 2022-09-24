@@ -8,6 +8,8 @@ import { AnalyzeHistory } from './components/AnalyzeHistory'
 import { ManageDataModels } from './components/ManageDataModels'
 import { ManageUsers } from './components/ManageUsers'
 import { NoMatch } from './components/NoMatch'
+import 'antd/dist/antd.min.css';
+
 
 
 function App() {

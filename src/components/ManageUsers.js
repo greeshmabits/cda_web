@@ -1,41 +1,53 @@
 import { useNavigate } from 'react-router-dom'
-import React from 'react';
-import * as ReactBootStrap from "react-bootstrap"
+import React,{useState} from 'react';
+import {Button,Table} from "antd";
+import {EditTwoTone,DeleteTwoTone} from '@ant-design/icons'
+import useFetch from './util/useFetch';
+
 
 export const ManageUsers = () => {
 	const navigate = useNavigate()
-	const users=[
-		{name:"User-1"},
-		{name:"User-2"},
-		{name:"User-3"},
+	const {data,loading,error}=useFetch("http://52.66.217.199:9080/users/");
+
+	
+	if (loading) return <h1>Loading...</h1>;
+
+	if (error) console.log(error);
+
+	const columns =[
+		{
+			key:'1',
+			title: 'Username',
+			dataIndex : 'username',
+			sorter : (record1, record2) => {
+				return record1.username > record2.username
+			}
+		},
+		{
+			key:'2',
+			title: 'Email',
+			dataIndex : 'email',
+			
+		},
+		{
+			key:'3',
+			title: 'Actions',
+			render : (_,record) => {
+				return <>
+				<EditTwoTone />
+				<DeleteTwoTone style={{color : "red", marginLeft : 12}} />
+				</>
+			}
+		},
 	]
 
-	const renderUser = (users,index) => {
-		return (
-			<tr key={index}>
-			<td>{users.name}</td>
-			</tr>
-		)
-	}
 	return (
 	  <form>
 		<h1>ManageUsers</h1>
-		<ReactBootStrap.Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>Select</th>
-        </tr>
-      </thead>
-      <tbody>
-		{users.map(renderUser)}
-      </tbody>
-    </ReactBootStrap.Table>
-	<div className='buttons'>
-		<button name='add'>Add</button>
-		<button name='edit'>Edit</button>
-		<button name='delete'>Delete</button>
-	</div>
+		<br></br>
+		<Button size='large' type='primary' align='center' >Add a new user</Button>
+		<br></br>
+		<Table columns={columns} dataSource={data}></Table>
 	  </form>
 	)
   }
