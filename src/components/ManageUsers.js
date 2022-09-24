@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import React,{useState} from 'react';
-import {Button,Table} from "antd";
+import {Button,Popconfirm,Table} from "antd";
 import {EditTwoTone,DeleteTwoTone} from '@ant-design/icons'
 import useFetch from './util/useFetch';
+import axios from 'axios';
+import AddUser from './user/AddUser';
 
 
 export const ManageUsers = () => {
@@ -35,20 +37,30 @@ export const ManageUsers = () => {
 			render : (_,record) => {
 				return <>
 				<EditTwoTone />
-				<DeleteTwoTone style={{color : "red", marginLeft : 12}} />
+				<Popconfirm title ="Click Ok to confirm deletion ?" onConfirm={(e) => deleteUser(record.username,e)}>
+				<DeleteTwoTone/>
+				</Popconfirm>
 				</>
 			}
 		},
 	]
 
+	const deleteUser = (userNameToDelete,e) =>{
+		e.preventDefault();
+		axios.delete(' http://52.66.217.199:9080/user/'+userNameToDelete+'').then(res => alert("Deleted user "+userNameToDelete+"successfully!")).catch(err => console.log(err))
+
+	}
+
+
+
 	return (
-	  <form>
+	  <>
 		<h1>ManageUsers</h1>
 		<br></br>
-		<Button size='large' type='primary' align='center' >Add a new user</Button>
+		<Button size='large' type='primary' align='center' onClick={<AddUser/>}>Add a new user</Button>
 		<br></br>
 		<Table columns={columns} dataSource={data}></Table>
-	  </form>
+	  </>
 	)
   }
 
