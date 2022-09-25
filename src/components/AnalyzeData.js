@@ -1,8 +1,26 @@
 import { useNavigate } from 'react-router-dom'
-import React from 'react';
+import React ,{useState} from 'react';
+import { Menu, Dropdown } from 'antd';
+import useFetch from './util/useFetch';
+
 
 export const AnalyzeData = () => {
   const navigate = useNavigate()
+  const {data,loading,err} = useFetch("http://52.66.217.199:9080/models/");
+  if (loading) return <h1>Loading...</h1>;
+
+	if (err) console.log(err);
+
+  console.log(data);  
+
+  const renderModelNames =data.map((data,index) => {
+		return (
+			<Menu.Item key={index}>
+			{data.modelname}
+			</Menu.Item>
+		)
+	})
+
   return (
     <>
       <form>
@@ -16,7 +34,19 @@ export const AnalyzeData = () => {
             <hr/>
             <div>
             <label>Data Model to Apply :</label>
-            <input type="text" placeholder='PCA Model 1' />
+          
+            <Dropdown
+          overlay={(
+            <Menu>
+                {renderModelNames} 
+            </Menu>
+          )}
+          trigger={['click']}>
+          <a className="ant-dropdown-link" 
+             onClick={e => e.preventDefault()}>
+            Select Model name
+          </a>
+        </Dropdown>
             <hr />
         <button type='submit' >Analyze</button>
         </div>
