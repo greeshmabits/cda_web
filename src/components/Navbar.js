@@ -14,7 +14,7 @@ export const Navbar = () => {
   return (
     <nav className='primary-nav'>
       <NavLink to='/' style={navLinkStyles}>
-        WelcomePage
+        HomePage
       </NavLink>
       <NavLink to='/analyzeData' style={navLinkStyles}>
         AnalyzeData

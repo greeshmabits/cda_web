@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import React from 'react';
-import Logout from '../App';
+
 
 export const WelcomePage = ({username}) => {
   const navigate = useNavigate()
@@ -23,7 +23,6 @@ processes. The outcome of the analysis is a set of quality and composition param
 the chemometric analytical models along with their measured values in the sample. This project can 
 be categorized under the Data Science and Analytics domain.</p>
 <br></br>
-<button onClick={Logout}>Logout</button>
 </form>
 
     </>
