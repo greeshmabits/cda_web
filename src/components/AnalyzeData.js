@@ -27,9 +27,10 @@ export const AnalyzeData = () => {
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
-      alert("File Uploaded Successfully!");
+      alert("File Uploaded Successfully....Processing Result!");
     } catch(error) {
-      console.log(error)
+      console.log(error);
+      alert("File Uploaded aborted-Invalid file/Model mismatch-"+error);
     }
     
   }
