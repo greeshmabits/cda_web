@@ -1,25 +1,20 @@
 import { useNavigate } from 'react-router-dom'
 import React ,{useState} from 'react';
-import { Menu, Dropdown } from 'antd';
 import useFetch from './util/useFetch';
 
 
 export const AnalyzeData = () => {
   const navigate = useNavigate()
+  const [modelSelection,setModelSelection] = useState("");
   const {data,loading,err} = useFetch("http://52.66.217.199:9080/models/");
+
+
   if (loading) return <h1>Loading...</h1>;
 
 	if (err) console.log(err);
 
   console.log(data);  
 
-  const renderModelNames =data.map((data,index) => {
-		return (
-			<Menu.Item key={index}>
-			{data.modelname}
-			</Menu.Item>
-		)
-	})
 
   return (
     <>
@@ -34,19 +29,11 @@ export const AnalyzeData = () => {
             <hr/>
             <div>
             <label>Data Model to Apply :</label>
-          
-            <Dropdown
-          overlay={(
-            <Menu>
-                {renderModelNames} 
-            </Menu>
-          )}
-          trigger={['click']}>
-          <a className="ant-dropdown-link" 
-             onClick={e => e.preventDefault()}>
-            Select Model name
-          </a>
-        </Dropdown>
+            <select onChange={(e) => {e.preventDefault(); setModelSelection(e.target.value);}}>
+              {
+              data?.map((result)=>(<option title={result.modelname}>{result.modelname}</option>))
+                }
+            </select>
             <hr />
         <button type='submit' >Analyze</button>
         </div>
