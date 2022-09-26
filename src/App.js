@@ -12,6 +12,8 @@ import AddUser from './components/user/AddUser';
 import { EditUser } from './components/user/EditUser';
 import 'antd/dist/antd.min.css';
 import { AnalysisReport } from './components/result/AnalysisReport';
+import AddModel from './components/model/AddModel';
+import { EditModel } from './components/model/EditModel';
 
 
 
@@ -55,6 +57,8 @@ function App() {
         <Route path='/analyzeData/result/:id' element={<AnalysisReport />} />
         <Route path='/analyzeHistory' element={<AnalyzeHistory />} />
         <Route path='/manageDataModels' element={<ManageDataModels />} />
+        <Route path='/model/add' element={<AddModel />} />
+        <Route path='/model/edit/:modelname' element={<EditModel />} /> 
         <Route path='/manageUsers' element={<ManageUsers />} />
         <Route path='/user/add' element={<AddUser />} />
         <Route path='/user/edit/:username' element={<EditUser />} />        

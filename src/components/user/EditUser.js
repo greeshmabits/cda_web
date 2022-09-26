@@ -2,7 +2,7 @@ import React ,{useEffect, useState} from 'react';
 import {useNavigate,useParams} from "react-router-dom";
 import {Button} from "antd";
 import axios from 'axios';
-import useFetch from '../util/useFetch';
+
 
 export const EditUser = () => {
     const navigate = useNavigate();
@@ -37,7 +37,7 @@ export const EditUser = () => {
             <h2>Make changes to the existing user details</h2>
             <div className="form-group">
                 <label htmlFor="name">Username:</label>
-                <input type="text" name="username" id="username" onChange={e => setDetails({...details, username: e.target.value})} value={details.username}/>
+                <input type="text" name="username" id="username" disabled="true" onChange={e => setDetails({...details, username: e.target.value})} value={details.username}/>
             </div>
             <div className="form-group">
                 <label htmlFor="name">First Name:</label>

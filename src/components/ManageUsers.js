@@ -35,9 +35,9 @@ export const ManageUsers = () => {
 			title: 'Actions',
 			render : (_,record) => {
 				return <>
-				<EditTwoTone onClick={(e) =>{editUser(record.username,e)}}/>
+				<EditTwoTone size={'large'} onClick={(e) =>{editUser(record.username,e)}}/>
 				<Popconfirm title ="Click Ok to confirm deletion ?" onConfirm={(e) => deleteUser(record.username,e)}>
-				<DeleteTwoTone/>
+				<DeleteTwoTone size={'large'}/>
 				</Popconfirm>
 				</>
 			}
