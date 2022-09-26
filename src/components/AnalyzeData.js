@@ -8,6 +8,9 @@ export const AnalyzeData = () => {
   const navigate = useNavigate()
   const [modelSelection,setModelSelection] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
+  const [runData,setRunData] = useState(null);
+  const [analyzeData,setAnalyzeData] = useState("");
+  //   const [runerror,setRunError] = useState(null);
   const {data,loading,err} = useFetch("http://52.66.217.199:9080/models/");
 
   const handleFileSelect = (event) => {
@@ -23,14 +26,25 @@ export const AnalyzeData = () => {
     try {
       const response = await axios({
         method: "post",
+        timeout: 9000,
         url: "http://52.66.217.199:9080/runs/",
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
-      alert("File Uploaded Successfully....Processing Result!");
+      
+        alert("File Uploaded Successfully....Processing Result!");
+        // setRunData(response.data);
+        // console.log(runData.id);
+        // console.log("------Above is the response.id");
+        // const id = runData.id
+        const id = 24;
+        const result= await axios.get(`http://52.66.217.199:9080/analyze/${id}`);
+        setAnalyzeData(result.data);
+        navigate(`/analyzeData/result/${id}`, {replace: true});
+
     } catch(error) {
       console.log(error);
-      alert("File Uploaded aborted-Invalid file/Model mismatch-"+error);
+      alert("File Uploaded error/File Processing error-"+error);
     }
     
   }
@@ -64,7 +78,6 @@ export const AnalyzeData = () => {
         <button type='submit' >Analyze</button>
         </div>
       </form>
-      {/* <button onClick={() => navigate('order-summary')}>Place order</button> */}
     </>
   )
 }

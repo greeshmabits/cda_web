@@ -183,3 +183,26 @@ form .form-inner input[type="submit"]:hover,
   box-sizing: border-box;
   font-family: sans-serif;
 }
+
+#result-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#result-table td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#result-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#result-table tr:hover {background-color: #ddd;}
+
+#result-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #5ba4e7;
+  color: white;
+}
