@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import React,{useState} from 'react';
+import React,{useReducer} from 'react';
 import {Button,Popconfirm,Table} from "antd";
 import {EditTwoTone,DeleteTwoTone} from '@ant-design/icons'
 import useFetch from './util/useFetch';
@@ -52,8 +52,8 @@ export const ManageUsers = () => {
 
 	const deleteUser = (userNameToDelete,e) =>{
 		e.preventDefault();
-		axios.delete(`http://52.66.217.199:9080/user/${userNameToDelete}`).then(res => alert("Deleted user "+userNameToDelete+"successfully!")).catch(err => console.log(err))
-
+		axios.delete(`http://52.66.217.199:9080/user/${userNameToDelete}`).then((res) => {console.log('Deleting user ',res); if (res.status == 200) alert("Deleted user "+userNameToDelete+" successfully!"); else alert("User not deleted.Please try again!");}).catch(err => console.log(err))
+		
 	}
 
 	const navigateToAddUser = () => {
