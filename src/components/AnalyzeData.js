@@ -8,12 +8,15 @@ export const AnalyzeData = () => {
   const navigate = useNavigate()
   const [modelSelection,setModelSelection] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
+  const [analyzeData,setAnalyzeData] = useState("");
   const {data,loading,err} = useFetch("http://52.66.217.199:9080/models/");
+
 
   const handleFileSelect = (event) => {
     setSelectedFile(event.target.files[0]);
     console.log(event.target.files[0]);
   }
+
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -23,14 +26,27 @@ export const AnalyzeData = () => {
     try {
       const response = await axios({
         method: "post",
+        timeout: 9000,
         url: "http://52.66.217.199:9080/runs/",
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
-      alert("File Uploaded Successfully....Processing Result!");
+      
+        alert("File Uploaded Successfully....Processing Result!");
+        console.log(response.data.id);
+        console.log("------Above is the run -id");
+        const id = response.data.id
+        const result= await axios.get(`http://52.66.217.199:9080/analyze/${id}`);
+        setAnalyzeData(result.data);
+        console.log("Analyzer output after analyze is "+result.data);
+        if (result.status == 200)
+          navigate(`/analyzeData/result/${id}`, {replace: true});
+        else
+          alert("Error processing the request.Please try again!")
+
     } catch(error) {
       console.log(error);
-      alert("File Uploaded aborted-Invalid file/Model mismatch-"+error);
+      alert("File Uploaded error/File Processing error-"+error);
     }
     
   }
@@ -64,7 +80,6 @@ export const AnalyzeData = () => {
         <button type='submit' >Analyze</button>
         </div>
       </form>
-      {/* <button onClick={() => navigate('order-summary')}>Place order</button> */}
     </>
   )
 }
