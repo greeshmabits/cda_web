@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { useNavigate,useParams } from 'react-router-dom'
-import {Button,Table} from "antd";
+import {Button} from "antd";
 import axios from 'axios';
 
 export const AnalysisReport = () => {

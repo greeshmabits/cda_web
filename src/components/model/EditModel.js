@@ -2,7 +2,6 @@ import React ,{useEffect, useState} from 'react';
 import {useNavigate,useParams} from "react-router-dom";
 import {Button} from "antd";
 import axios from 'axios';
-import {QuestionOutlined} from '@ant-design/icons';
 
 
 export const EditModel = () => {
