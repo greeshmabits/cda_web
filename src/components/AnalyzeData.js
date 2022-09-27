@@ -72,6 +72,7 @@ export const AnalyzeData = () => {
             <div>
             <label>Data Model to Apply :</label>
             <select onChange={(e) => {e.preventDefault(); setModelSelection(e.target.value);}}>
+              <option>Select Model</option>
               {
               data?.map((result)=>(<option title={result.modelname}>{result.modelname}</option>))
                 }
