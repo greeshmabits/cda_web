@@ -28,6 +28,8 @@ export const AnalyzeHistory = () => {
 return (
 	<form>
 	<h1>AnalyzeHistory.</h1>
+	<br></br>
+	<br></br>
 	<label>Data Model to Apply :</label>
             <select onChange={handleFileSelect}>
 				<option>Select Sample File</option>
