@@ -1,14 +1,15 @@
 import { useNavigate } from 'react-router-dom'
 import React from 'react';
+import { useAuth } from './util/auth';
 
-
-export const WelcomePage = ({username}) => {
-  const navigate = useNavigate()
+export const WelcomePage = () => {
+  const navigate = useNavigate();
+  const auth = useAuth();
 
   return (
     <>
       <h1>Chemometric Data Analyzer</h1>
-      <h2>Welcome {username},</h2>
+      <h2>Welcome {auth.user},</h2>
       <form className='welcome-data-container'>
       
       

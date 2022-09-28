@@ -1,18 +1,25 @@
 import React, {useState} from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from './util/auth';
 
-function LoginForm({Login , error}) {
+function LoginForm() {
     const [details,setDetails] = useState({username:"",password:""});
+    const navigate = useNavigate()
+    const location = useLocation()
+    const auth = useAuth()
 
+    const redirectPath = location.state?.path || '/'
 
-    const submitHandler = e => {
-        Login(details);
+    const handleLogin = e => {
+        auth.login(details.username)
+        navigate(redirectPath, { replace: true })
     }
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={handleLogin}>
         <div className='form-inner'>
             <h2>Chemometrics Data Analyzer</h2>
-            <div>{(error != "") ? (<div className="error">{error}</div> ) : "" }</div>
+            {/* <div>{(error != "") ? (<div className="error">{error}</div> ) : "" }</div> */}
             <div className="form-group">
                 <label htmlFor="name">Username:</label>
                 <input type="text" name="username" id="username" onChange={e => setDetails({...details, username: e.target.value})} value={details.username}/>
