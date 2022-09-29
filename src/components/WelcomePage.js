@@ -9,7 +9,7 @@ export const WelcomePage = () => {
   return (
     <>
       <h1>Chemometric Data Analyzer</h1>
-      <h2>Welcome {auth.user},</h2>
+      <h2>Welcome <span className='user_name'>{auth.user}</span>,</h2>
       <form className='welcome-data-container'>
       
       

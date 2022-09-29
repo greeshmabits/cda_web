@@ -21,36 +21,9 @@ import { RequireAuth } from './components/util/RequireAuth';
 
 function App() {
 
-  // const adminUser = {
-  //   username : "admin",
-  //   password: "admin",
-  // }
-  // const [user,setUser] = useState({username:"",});
-  // const [error,setError] = useState("");
-
-  // const Login = details => {
-  //   console.log(details);
-
-  //   if (details.username == adminUser.username && details.password == adminUser.password){
-  //     console.log("Logged in successfully");
-  //     setUser({
-  //       username : details.username,
-  //     });
-  //   }
-  //   else {
-  //     console.log("Login credentials are wrong!");
-  //     setError("Details do not match!");
-  //   }
-
-  // }
-
-  // const Logout = () => {
-  //   setUser({username:"",});
-  //   console.log("Logout");
-  // }
+ 
   return (
     <div className="App">
-    {/* {(user.username != "") ? ( */}
       <>
       <AuthProvider>
       <Navbar />
