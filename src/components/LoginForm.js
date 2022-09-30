@@ -38,7 +38,7 @@ function LoginForm() {
             const password = data?.password;
             const roles = data?.usertype;
             if (details.password == password) {
-                auth.login(details.username);
+                auth.login(details.username,roles);
                 navigate(redirectPath, { replace: true });
             }
             else {

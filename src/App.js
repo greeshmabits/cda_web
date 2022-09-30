@@ -16,6 +16,8 @@ import AddModel from './components/model/AddModel';
 import { EditModel } from './components/model/EditModel';
 import {AuthProvider} from './components/util/auth';
 import { RequireAuth } from './components/util/RequireAuth';
+import { RequireAdminAuth } from './components/util/RequireAdminAuth';
+import { PermissionDenied } from './components/user/PermissionDenied';
 
 
 
@@ -32,13 +34,14 @@ function App() {
         <Route path='/analyzeData' element={<RequireAuth><AnalyzeData /></RequireAuth>} />
         <Route path='/analyzeData/result/:id' element={<RequireAuth><AnalysisReport /></RequireAuth>} />
         <Route path='/analyzeHistory' element={<RequireAuth><AnalyzeHistory /></RequireAuth>} />
-        <Route path='/manageDataModels' element={<RequireAuth><ManageDataModels /></RequireAuth>} />
-        <Route path='/model/add' element={<RequireAuth><AddModel /></RequireAuth>} />
-        <Route path='/model/edit/:modelname' element={<RequireAuth><EditModel /></RequireAuth>} /> 
-        <Route path='/manageUsers' element={<RequireAuth><ManageUsers /></RequireAuth>} />
-        <Route path='/user/add' element={<RequireAuth><AddUser /></RequireAuth>} />
-        <Route path='/user/edit/:username' element={<RequireAuth><EditUser /></RequireAuth>} />        
+        <Route path='/manageDataModels' element={<RequireAdminAuth><ManageDataModels /></RequireAdminAuth>} />
+        <Route path='/model/add' element={<RequireAdminAuth><AddModel /></RequireAdminAuth>} />
+        <Route path='/model/edit/:modelname' element={<RequireAdminAuth><EditModel /></RequireAdminAuth>} /> 
+        <Route path='/manageUsers' element={<RequireAdminAuth><ManageUsers /></RequireAdminAuth>} />
+        <Route path='/user/add' element={<RequireAdminAuth><AddUser /></RequireAdminAuth>} />
+        <Route path='/user/edit/:username' element={<RequireAdminAuth><EditUser /></RequireAdminAuth>} />        
         <Route path='/loginForm' element={<LoginForm />} />
+        <Route path='/denied' element={<PermissionDenied />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
       </AuthProvider>
