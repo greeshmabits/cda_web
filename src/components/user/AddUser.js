@@ -27,27 +27,27 @@ const AddUser = () => {
             <h2>Enter the details to add user</h2>
             <div className="form-group">
                 <label htmlFor="name">Username:</label>
-                <input type="text" name="username" id="username" onChange={e => setDetails({...details, username: e.target.value})} value={details.username}/>
+                <input type="text" name="username" id="username" onChange={e => setDetails({...details, username: e.target.value})} value={details.username} required/>
             </div>
             <div className="form-group">
                 <label htmlFor="name">First Name:</label>
-                <input type="text" name="firstname" id="firstname" onChange={e => setDetails({...details, firstname: e.target.value})} value={details.firstname}/>
+                <input type="text" name="firstname" id="firstname" onChange={e => setDetails({...details, firstname: e.target.value})} value={details.firstname} required/>
             </div>
             <div className="form-group">
                 <label htmlFor="name">Last Name:</label>
-                <input type="text" name="lastname" id="lastname" onChange={e => setDetails({...details, lastname: e.target.value})} value={details.lastname}/>
+                <input type="text" name="lastname" id="lastname" onChange={e => setDetails({...details, lastname: e.target.value})} value={details.lastname} required/>
             </div>
             <div className="form-group">
                 <label htmlFor="name">User Type:</label>
-                <input type="text" name="usertype" id="usertype" onChange={e => setDetails({...details, usertype: e.target.value})} value={details.usertype}/>
+                <input type="text" name="usertype" id="usertype" onChange={e => setDetails({...details, usertype: e.target.value})} value={details.usertype} required/>
             </div>
             <div className="form-group">
                 <label htmlFor="email">Email:</label>
-                <input type="email" name="email" id="email" onChange={e => setDetails({...details, email: e.target.value})} value={details.email}/>
+                <input type="email" name="email" id="email" onChange={e => setDetails({...details, email: e.target.value})} value={details.email} required/>
             </div>
             <div className="form-group">
                 <label htmlFor="password">Password:</label>
-                <input type="password" name="password" id="password" onChange={e => setDetails({...details, password : e.target.value})} value={details.password}/>
+                <input type="password" name="password" id="password" onChange={e => setDetails({...details, password : e.target.value})} value={details.password} required/>
             </div>
             <div className="form-buttons">
             <Button size='large' type='primary' align='center' margin-right='10px' onClick={submitHandler}>Add a new user</Button>

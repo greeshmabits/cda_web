@@ -14,61 +14,42 @@ import 'antd/dist/antd.min.css';
 import { AnalysisReport } from './components/result/AnalysisReport';
 import AddModel from './components/model/AddModel';
 import { EditModel } from './components/model/EditModel';
+import {AuthProvider} from './components/util/auth';
+import { RequireAuth } from './components/util/RequireAuth';
+import { RequireAdminAuth } from './components/util/RequireAdminAuth';
+import { PermissionDenied } from './components/user/PermissionDenied';
 
 
 
 function App() {
 
-  const adminUser = {
-    username : "admin",
-    password: "admin",
-  }
-  const [user,setUser] = useState({username:"",});
-  const [error,setError] = useState("");
-
-  const Login = details => {
-    console.log(details);
-
-    if (details.username == adminUser.username && details.password == adminUser.password){
-      console.log("Logged in successfully");
-      setUser({
-        username : details.username,
-      });
-    }
-    else {
-      console.log("Login credentials are wrong!");
-      setError("Details do not match!");
-    }
-
-  }
-
-  const Logout = () => {
-    setUser({username:"",});
-    console.log("Logout");
-  }
+ 
   return (
     <div className="App">
-    {(user.username != "") ? (
       <>
+      <AuthProvider>
       <Navbar />
       <Routes>
-        <Route path='/' element={<WelcomePage username={user.username}/>} />
-        <Route path='/analyzeData' element={<AnalyzeData />} />
-        <Route path='/analyzeData/result/:id' element={<AnalysisReport />} />
-        <Route path='/analyzeHistory' element={<AnalyzeHistory />} />
-        <Route path='/manageDataModels' element={<ManageDataModels />} />
-        <Route path='/model/add' element={<AddModel />} />
-        <Route path='/model/edit/:modelname' element={<EditModel />} /> 
-        <Route path='/manageUsers' element={<ManageUsers />} />
-        <Route path='/user/add' element={<AddUser />} />
-        <Route path='/user/edit/:username' element={<EditUser />} />        
+        <Route path='/' element={<RequireAuth><WelcomePage/></RequireAuth>} />
+        <Route path='/analyzeData' element={<RequireAuth><AnalyzeData /></RequireAuth>} />
+        <Route path='/analyzeData/result/:id' element={<RequireAuth><AnalysisReport /></RequireAuth>} />
+        <Route path='/analyzeHistory' element={<RequireAuth><AnalyzeHistory /></RequireAuth>} />
+        <Route path='/manageDataModels' element={<RequireAdminAuth><ManageDataModels /></RequireAdminAuth>} />
+        <Route path='/model/add' element={<RequireAdminAuth><AddModel /></RequireAdminAuth>} />
+        <Route path='/model/edit/:modelname' element={<RequireAdminAuth><EditModel /></RequireAdminAuth>} /> 
+        <Route path='/manageUsers' element={<RequireAdminAuth><ManageUsers /></RequireAdminAuth>} />
+        <Route path='/user/add' element={<RequireAdminAuth><AddUser /></RequireAdminAuth>} />
+        <Route path='/user/edit/:username' element={<RequireAdminAuth><EditUser /></RequireAdminAuth>} />        
         <Route path='/loginForm' element={<LoginForm />} />
+        <Route path='/denied' element={<PermissionDenied />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
-      </>)
-    : (
-      <LoginForm Login={Login} error={error} />
-    ) }
+      </AuthProvider>
+      </>
+      {/* )
+    : ( */}
+      {/* <LoginForm Login={Login} error={error} /> */}
+    {/* ) } */}
     </div>
   )
 }

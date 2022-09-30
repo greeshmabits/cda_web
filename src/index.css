@@ -1,20 +1,8 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 
-
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.user_name {
+  color :#133c9c;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
 .primary-nav {
   background-color: rgb(16, 89, 153);
   padding: 16px 32px;
@@ -33,14 +21,10 @@ nav a:hover {
   margin-right: 20px;
   color: rgb(14, 1, 1);
 }
-/* nav a.active {
-  text-decoration: none;
-  font-weight: bold;
-} */
 
 h1 , h2 {
   margin-top: 20px;
-  margin-left: 20px;
+  margin-left: 15pxpx;
   margin-bottom: 20px;}
 
 form  {
@@ -80,24 +64,7 @@ form  {
   color :#FFF;
   cursor: pointer;
 }
-/* -------------- */
 
-/* form {
-  display: block;
-  position: relative;
-} */
-
-/* form:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: 1;
-  background-image: linear-gradient(to bottom right, #FFCE00 , #FE4880);
-} */
 
 form .form-inner {
   position: relative;
@@ -171,7 +138,21 @@ form .form-inner input[type="submit"],
 
 }
 
-form .form-inner input[type="submit"]:hover,
+form .form-inner [type="reset"]{
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-image: linear-gradient(to right,#3e3c33 50%,#133c9c 50%, #898284 );
+  background-size: 200%;
+  background-position: 0%;
+  transition: 0.4s;
+  font-weight: 700;
+  color :#FFF;
+  cursor: pointer;
+  margin-left: 40px;
+}
+
+form .form-inner input[type="submit"]:hover,input[type="reset"]:hover,
 .welcome button:hover{
   background-position: 100% 0%;
 }

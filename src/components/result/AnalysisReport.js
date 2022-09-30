@@ -22,7 +22,8 @@ export const AnalysisReport = () => {
     }
 
     const navigateToAnalyzisData = () => {
-		navigate('/analyzeData');
+		// navigate('/analyzeData');
+        navigate(-1);
 	}
  
   return (

@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate } from 'react-router-dom'
 import React from 'react';
-// import { useAuth } from './auth'
+import { useAuth } from './util/auth';
 
 export const Navbar = () => {
-  // const auth = useAuth()
+  const auth = useAuth();
+  const navigate = useNavigate();
   const navLinkStyles = ({ isActive }) => {
     return {
       fontWeight: isActive ? 'bold' : 'normal',
@@ -11,8 +12,19 @@ export const Navbar = () => {
     }
   }
 
+  const handleLogout = () => {
+    auth.logout()
+    navigate('/loginForm');
+  }
+
   return (
     <nav className='primary-nav'>
+
+      {!auth.user && (
+        <NavLink to='/loginForm' style={navLinkStyles}>
+          Login
+        </NavLink>
+      )}
       <NavLink to='/' style={navLinkStyles}>
         HomePage
       </NavLink>
@@ -28,20 +40,11 @@ export const Navbar = () => {
       <NavLink to='/manageUsers' style={navLinkStyles}>
         ManageUsers
       </NavLink>
-      <NavLink to='/loginForm' style={navLinkStyles}>
-        Logout
-      </NavLink>
-      {/* <NavLink to='/products' style={navLinkStyles}>
-        AnalyzeHistory
-      </NavLink>
-      <NavLink to='/profile' style={navLinkStyles}>
-        ManageDataModels
-      </NavLink> */}
-      {/* {!auth.user && ( */}
-        {/* <NavLink to='/login' style={navLinkStyles}>
-          ManageUsers
-        </NavLink> */}
-      {/* )} */}
+      {auth.user && (
+        <NavLink to='/loginForm' style={navLinkStyles} onClick={handleLogout}>
+          Logout
+        </NavLink>
+      )}
     </nav>
   )
 }
