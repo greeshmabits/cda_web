@@ -19,12 +19,6 @@ export const Navbar = () => {
 
   return (
     <nav className='primary-nav'>
-
-      {!auth.user && (
-        <NavLink to='/loginForm' style={navLinkStyles}>
-          Login
-        </NavLink>
-      )}
       <NavLink to='/' style={navLinkStyles}>
         HomePage
       </NavLink>

@@ -6,10 +6,10 @@ import useFetch from './util/useFetch';
 import axios from 'axios';
 
 
-export const ManageUsers = () => {
+export const ManageUsers = (properties) => {
 	const navigate = useNavigate()
 	const {data,loading,error}=useFetch("http://52.66.217.199:9080/users/");
-
+	properties.funcNav(true);
 	
 	if (loading) return <h1>Loading...</h1>;
 

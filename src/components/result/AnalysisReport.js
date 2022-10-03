@@ -3,11 +3,12 @@ import { useNavigate,useParams } from 'react-router-dom'
 import {Button} from "antd";
 import axios from 'axios';
 
-export const AnalysisReport = () => {
+export const AnalysisReport = (properties) => {
     const navigate = useNavigate();
     const {id} = useParams();
     const [details,setDetails] = useState({id:"",samplefile:"",result: "",updatetime:"",modelname:""});
     console.log("Recieved id is : "+id)
+    properties.funcNav(true);
 
     useEffect(() => {
         loadDetails();

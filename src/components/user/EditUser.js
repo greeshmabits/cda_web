@@ -4,10 +4,11 @@ import {Button} from "antd";
 import axios from 'axios';
 
 
-export const EditUser = () => {
+export const EditUser = (properties) => {
     const navigate = useNavigate();
     const {username} = useParams();
     console.log(username);
+    properties.funcNav(true);
 
     const [details,setDetails] = useState({username:"",firstname:"",lastname: "",usertype:"",email:"",password:""});
 

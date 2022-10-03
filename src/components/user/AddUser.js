@@ -3,9 +3,10 @@ import {useNavigate} from "react-router-dom";
 import {Button} from "antd";
 import axios from 'axios';
 
-const AddUser = () => {
+const AddUser = (properties) => {
     const navigate = useNavigate()
     const [details,setDetails] = useState({username:"",firstname:"",lastname: "",usertype:"",email:"",password:""});
+    properties.funcNav(true);
 
     const submitHandler = (e) => {
 		e.preventDefault();

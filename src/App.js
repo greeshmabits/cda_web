@@ -23,26 +23,32 @@ import { PermissionDenied } from './components/user/PermissionDenied';
 
 function App() {
 
+  const [showNav, setShowNav] = useState(true);
  
   return (
     <div className="App">
       <>
       <AuthProvider>
-      <Navbar />
+      {   showNav &&
+          <nav>
+            <Navbar />
+          </nav>
+   } 
+      {/* <Navbar /> */}
       <Routes>
-        <Route path='/' element={<RequireAuth><WelcomePage/></RequireAuth>} />
-        <Route path='/analyzeData' element={<RequireAuth><AnalyzeData /></RequireAuth>} />
-        <Route path='/analyzeData/result/:id' element={<RequireAuth><AnalysisReport /></RequireAuth>} />
-        <Route path='/analyzeHistory' element={<RequireAuth><AnalyzeHistory /></RequireAuth>} />
-        <Route path='/manageDataModels' element={<RequireAdminAuth><ManageDataModels /></RequireAdminAuth>} />
-        <Route path='/model/add' element={<RequireAdminAuth><AddModel /></RequireAdminAuth>} />
-        <Route path='/model/edit/:modelname' element={<RequireAdminAuth><EditModel /></RequireAdminAuth>} /> 
-        <Route path='/manageUsers' element={<RequireAdminAuth><ManageUsers /></RequireAdminAuth>} />
-        <Route path='/user/add' element={<RequireAdminAuth><AddUser /></RequireAdminAuth>} />
-        <Route path='/user/edit/:username' element={<RequireAdminAuth><EditUser /></RequireAdminAuth>} />        
-        <Route path='/loginForm' element={<LoginForm />} />
-        <Route path='/denied' element={<PermissionDenied />} />
-        <Route path='*' element={<NoMatch />} />
+        <Route path='/' element={<RequireAuth ><WelcomePage funcNav={setShowNav}/></RequireAuth>} />
+        <Route path='/analyzeData' element={<RequireAuth><AnalyzeData funcNav={setShowNav}/></RequireAuth>} />
+        <Route path='/analyzeData/result/:id' element={<RequireAuth><AnalysisReport funcNav={setShowNav}/></RequireAuth>} />
+        <Route path='/analyzeHistory' element={<RequireAuth><AnalyzeHistory funcNav={setShowNav}/></RequireAuth>} />
+        <Route path='/manageDataModels' element={<RequireAdminAuth><ManageDataModels funcNav={setShowNav}/></RequireAdminAuth>} />
+        <Route path='/model/add' element={<RequireAdminAuth><AddModel funcNav={setShowNav}/></RequireAdminAuth>} />
+        <Route path='/model/edit/:modelname' element={<RequireAdminAuth><EditModel funcNav={setShowNav}/></RequireAdminAuth>} /> 
+        <Route path='/manageUsers' element={<RequireAdminAuth><ManageUsers funcNav={setShowNav}/></RequireAdminAuth>} />
+        <Route path='/user/add' element={<RequireAdminAuth><AddUser funcNav={setShowNav}/></RequireAdminAuth>} />
+        <Route path='/user/edit/:username' element={<RequireAdminAuth><EditUser funcNav={setShowNav}/></RequireAdminAuth>} />        
+        <Route path='/loginForm' element={<LoginForm funcNav={setShowNav}/>} />
+        <Route path='/denied' element={<PermissionDenied funcNav={setShowNav}/>} />
+        <Route path='*' element={<NoMatch funcNav={setShowNav} />} />
       </Routes>
       </AuthProvider>
       </>

@@ -3,10 +3,11 @@ import {useNavigate} from "react-router-dom";
 import {Button} from "antd";
 import axios from 'axios';
 
-const AddModel = () => {
+const AddModel = (properties) => {
     const navigate = useNavigate()
     const [details,setDetails] = useState({modelname:"",type:""});
     const [selectedFile, setSelectedFile] = useState(null);
+    properties.funcNav(true);
 
     const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0]);

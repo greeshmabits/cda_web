@@ -2,9 +2,10 @@ import { useNavigate } from 'react-router-dom'
 import React from 'react';
 import { useAuth } from './util/auth';
 
-export const WelcomePage = () => {
+export const WelcomePage = (properties) => {
   const navigate = useNavigate();
   const auth = useAuth();
+  properties.funcNav(true);
 
   return (
     <>

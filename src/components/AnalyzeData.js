@@ -4,12 +4,13 @@ import useFetch from './util/useFetch';
 import axios from 'axios';
 
 
-export const AnalyzeData = () => {
+export const AnalyzeData = (properties) => {
   const navigate = useNavigate()
   const [modelSelection,setModelSelection] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [analyzeData,setAnalyzeData] = useState("");
   const {data,loading,err} = useFetch("http://52.66.217.199:9080/models/");
+  properties.funcNav(true);
 
 
   const handleFileSelect = (event) => {

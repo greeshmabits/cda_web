@@ -58,7 +58,6 @@ export const EditModel = () => {
         <form>
         <div className='form-inner'>
         <h2>Make changes to the existing model details</h2>
-            <h2>Enter the details to add model</h2>
             <div className="form-group">
                 <label htmlFor="name">Modelname:</label>
                 <input type="text" name="modelname" id="modelname" disabled="true" value={modelname}/>

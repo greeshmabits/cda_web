@@ -1,7 +1,14 @@
 import React from 'react'
+import pic from "./resources/PageNotFound.jpg";
 
-export const NoMatch = () => {
+
+
+export const NoMatch = (properties) => {
+  properties.funcNav(false);
   return (
-    <div>Page not found</div>
+    <form><img src={pic}  alt="Page not found" /></form>
+    
+    
+    
   )
 }

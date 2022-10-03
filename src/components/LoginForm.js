@@ -4,12 +4,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from './util/auth';
 
 
-function LoginForm() {
+function LoginForm(properties) {
     const navigate = useNavigate()
     const location = useLocation()
     const auth = useAuth()
     const userRef = useRef();
     const errRef = useRef();
+    properties.funcNav(false);
 
     const [data,setData]=useState(null);
     const [loading,setLoading] = useState(false);
@@ -38,7 +39,7 @@ function LoginForm() {
             const password = data?.password;
             const roles = data?.usertype;
             if (details.password == password) {
-                auth.login(details.username,roles);
+                auth.login(details.username,roles,properties.funcNav);
                 navigate(redirectPath, { replace: true });
             }
             else {

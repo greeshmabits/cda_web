@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import useFetch from './util/useFetch';
 import axios from 'axios';
 
-export const AnalyzeHistory = () => {
+export const AnalyzeHistory = (properties) => {
 	const navigate = useNavigate();
 	const {data,loading,err} = useFetch("http://52.66.217.199:9080/runs/");
+	properties.funcNav(true);
 
     
 	const handleFileSelect = (event) => {
