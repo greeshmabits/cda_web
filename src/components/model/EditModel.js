@@ -31,6 +31,9 @@ export const EditModel = () => {
               headers: { "Content-Type": "multipart/form-data" },
             });
 		console.log(response.data);
+        if (response.status == 200) 
+        alert("Model updated successfully!"); 
+        else alert("Model not updated.Please try again!");  
         navigate("/manageDataModels");
 	}
     catch(error) {
