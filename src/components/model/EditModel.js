@@ -65,7 +65,6 @@ export const EditModel = () => {
             <div className="form-group">
                 <label htmlFor="name">Type:</label>
                 <select onChange={e => setDetails({...details, type: e.target.value})} value={details.type}>
-				            <option>----------Select Model Type----------</option>
                     <option id='pls' value='1'>PLS</option>
                     <option id='simca' value='2'>SIMCA</option>
                 </select>

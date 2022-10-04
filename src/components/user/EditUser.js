@@ -50,7 +50,6 @@ export const EditUser = () => {
             <div className="form-group">
                 <label htmlFor="name">User Type:</label>
                 <select onChange={e => setDetails({...details, usertype: e.target.value})} value={details.usertype}>
-				            <option>----------Select User Type----------</option>
                     <option id='admin' value='0'>Admin</option>
                     <option id='general' value='1'>General</option>
                 </select>

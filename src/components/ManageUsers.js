@@ -10,16 +10,6 @@ import { getUserTypeName } from './util/common';
 export const ManageUsers = () => {
 	const navigate = useNavigate()
 	const {data,loading,error}=useFetch("http://52.66.217.199:9080/users/");
-
-	// function getUserTypeName(data) {
-	// 	// console.log(data);
-    //     if (data === 0) {
-    //       return "admin";
-    //     } 
-    //     else {
-    //       return "general";
-    //     }
-    //   }
 	
 	if (loading) return <h1>Loading...</h1>;
 
