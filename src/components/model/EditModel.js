@@ -58,14 +58,17 @@ export const EditModel = () => {
         <form>
         <div className='form-inner'>
         <h2>Make changes to the existing model details</h2>
-            <h2>Enter the details to add model</h2>
             <div className="form-group">
                 <label htmlFor="name">Modelname:</label>
                 <input type="text" name="modelname" id="modelname" disabled="true" value={modelname}/>
             </div>
             <div className="form-group">
                 <label htmlFor="name">Type:</label>
-                <input type="text" name="type" id="type" onChange={e => setDetails({...details, type: e.target.value})} value={details.type}/>
+                <select onChange={e => setDetails({...details, type: e.target.value})} value={details.type}>
+				            <option>----------Select Model Type----------</option>
+                    <option id='pls' value='1'>PLS</option>
+                    <option id='simca' value='2'>SIMCA</option>
+                </select>
             </div>
             <div className="form-group">     
             <label>Data Model File : </label>
