@@ -58,7 +58,11 @@ const AddModel = () => {
             </div>
             <div className="form-group">
                 <label htmlFor="name">Type:</label>
-                <input type="text" name="type" id="type" onChange={e => setDetails({...details, type: e.target.value})} value={details.type} required/>
+                <select onChange={e => setDetails({...details, type: e.target.value})}>
+				            <option>----------Select Model Type----------</option>
+                    <option id='pls' value='1'>PLS</option>
+                    <option id='simca' value='2'>SIMCA</option>
+                </select>
             </div>
             <div className="form-group">
             <label>Data Model File :</label>

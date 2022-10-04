@@ -49,7 +49,10 @@ export const EditUser = () => {
             </div>
             <div className="form-group">
                 <label htmlFor="name">User Type:</label>
-                <input type="text" name="usertype" id="usertype" onChange={e => setDetails({...details, usertype: e.target.value})} value={details.usertype}/>
+                <select onChange={e => setDetails({...details, usertype: e.target.value})} value={details.usertype}>
+                    <option id='admin' value='0'>Admin</option>
+                    <option id='general' value='1'>General</option>
+                </select>
             </div>
             <div className="form-group">
                 <label htmlFor="email">Email:</label>
