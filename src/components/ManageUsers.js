@@ -4,12 +4,22 @@ import {Button,Popconfirm,Table} from "antd";
 import {EditTwoTone,DeleteTwoTone} from '@ant-design/icons'
 import useFetch from './util/useFetch';
 import axios from 'axios';
+import { getUserTypeName } from './util/common';
 
 
 export const ManageUsers = () => {
 	const navigate = useNavigate()
 	const {data,loading,error}=useFetch("http://52.66.217.199:9080/users/");
 
+	// function getUserTypeName(data) {
+	// 	// console.log(data);
+    //     if (data === 0) {
+    //       return "admin";
+    //     } 
+    //     else {
+    //       return "general";
+    //     }
+    //   }
 	
 	if (loading) return <h1>Loading...</h1>;
 
@@ -32,6 +42,15 @@ export const ManageUsers = () => {
 		},
 		{
 			key:'3',
+			title: 'Role',
+			dataIndex : 'usertype',
+			 render : (text) => {
+				return getUserTypeName(text)
+			}
+			
+		},
+		{
+			key:'4',
 			title: 'Actions',
 			render : (_,record) => {
 				return <>

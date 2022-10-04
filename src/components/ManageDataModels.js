@@ -4,6 +4,7 @@ import {Button,Table,Popconfirm} from "antd";
 import {EditTwoTone,DeleteTwoTone} from '@ant-design/icons'
 import useFetch from './util/useFetch';
 import axios from 'axios';
+import { getModelTypeName } from './util/common';
 
 
 export const ManageDataModels = () => {
@@ -29,6 +30,9 @@ export const ManageDataModels = () => {
 			dataIndex : 'type',
 			sorter : (record1, record2) => {
 				return record1.type > record2.type
+			},
+			render : (text) => {
+				return getModelTypeName(text)
 			}
 		},
 		{
