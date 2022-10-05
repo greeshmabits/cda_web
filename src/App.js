@@ -29,7 +29,6 @@ function App() {
     <div className="App">
       <>
       <AuthProvider>
-      {/* <Navbar /> */}
       <Routes>
       <Route path='/' element={<LoginForm />} />
       <Route path='/loggedin' element={<RequireAuth><WelcomePage/></RequireAuth>} >
