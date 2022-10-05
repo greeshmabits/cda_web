@@ -7,10 +7,13 @@ export const AnalysisReport = () => {
     const navigate = useNavigate();
     const {id} = useParams();
     const [details,setDetails] = useState({id:"",samplefile:"",result: "",updatetime:"",modelname:""});
+    const [jsonResult,setJsonResult]=useState({});
+    // const [resultDetails,setResultDetails] = useState({modeltype:"",modelname:"",datacount:"",setcomponent:"",maxcomponent:"",resultid:"",result0:""});
     console.log("Recieved id is : "+id)
 
     useEffect(() => {
         loadDetails();
+        // mapJsonData();
     },[]);  
 
     const loadDetails= async () => {
@@ -25,6 +28,19 @@ export const AnalysisReport = () => {
 		// navigate('/loggedin/analyzeData');
         navigate(-1);
 	}
+
+    const mapJsonData = ()=>{
+        setJsonResult(details.result);
+        console.log("jsonresult before parsing--->"+jsonResult);
+        const jsonObj=JSON.parse(jsonResult);
+        console.log("JsonResult after parsing is --->"+jsonObj)
+        // setResultDetails({...resultDetails,modeltype:jsonObj["Model Type"],modelname:jsonObj["Model Name"],datacount:jsonObj["Data Count"],setcomponent:jsonObj["Set Component"],maxcomponent:jsonObj["Max Component"],resultid:jsonObj["Result Id"],result0:jsonObj["Result0"]})
+        const ModelType=jsonObj["Model Type"];
+        const indexObj=jsonObj[1];
+        console.log("---------ModelType is "+ModelType)
+        console.log("---------index is "+indexObj)
+    }
+
  
   return (
     <>
@@ -53,14 +69,14 @@ export const AnalysisReport = () => {
         </tr>
         <tr>
             <td>Result</td>
-            <td>{details.result}</td>
+            {/* <td>{details.result}</td> */}
         </tr>
         </tbody>
         
     </table>
     
     <br/>
-    <Button size='large' align='center' margin-right='10px' margin-left='10px' onClick={navigateToAnalyzisData}>Go Back</Button>
+    <Button size='large' align='center' margin-right='10px' margin-left='10px' onClick={mapJsonData}>Go Back</Button>
     </>
     
   )
