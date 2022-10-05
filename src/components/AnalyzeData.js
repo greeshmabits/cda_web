@@ -40,7 +40,7 @@ export const AnalyzeData = () => {
         setAnalyzeData(result.data);
         console.log("Analyzer output after analyze is "+result.data);
         if (result.status == 200)
-          navigate(`/analyzeData/result/${id}`, {replace: true});
+          navigate(`/loggedin/result/${id}`, {replace: true});
         else
           alert("Error processing the request.Please try again!")
 

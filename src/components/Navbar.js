@@ -2,7 +2,7 @@ import { NavLink,useNavigate } from 'react-router-dom'
 import React from 'react';
 import { useAuth } from './util/auth';
 
-export const Navbar = () => {
+export const NavbarGeneral = () => {
   const auth = useAuth();
   const navigate = useNavigate();
   const navLinkStyles = ({ isActive }) => {
@@ -14,34 +14,63 @@ export const Navbar = () => {
 
   const handleLogout = () => {
     auth.logout()
-    navigate('/loginForm');
+    navigate('/');
   }
 
   return (
     <nav className='primary-nav'>
-
-      {!auth.user && (
-        <NavLink to='/loginForm' style={navLinkStyles}>
-          Login
-        </NavLink>
-      )}
-      <NavLink to='/' style={navLinkStyles}>
+      <NavLink to='/loggedin' style={navLinkStyles}>
         HomePage
       </NavLink>
-      <NavLink to='/analyzeData' style={navLinkStyles}>
+      <NavLink to='/loggedin/analyzeData' style={navLinkStyles}>
         AnalyzeData
       </NavLink>
-      <NavLink to='/analyzeHistory' style={navLinkStyles}>
-        AnalyzeHistory
+      <NavLink to='/loggedin/analyzeHistory' style={navLinkStyles}>
+        AnalysisHistory
       </NavLink>
-      <NavLink to='/manageDataModels' style={navLinkStyles}>
+      {auth.user && (
+        <NavLink to='/' style={navLinkStyles} onClick={handleLogout}>
+          Logout
+        </NavLink>
+      )}
+    </nav>
+  )
+}
+
+export const NavbarAdmin = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      fontWeight: isActive ? 'bold' : 'normal',
+      textDecoration: isActive ? 'none' : 'underline'
+    }
+  }
+
+  const handleLogout = () => {
+    auth.logout()
+    navigate('/');
+  }
+
+  return (
+    <nav className='primary-nav'>
+      <NavLink to='/loggedin' style={navLinkStyles}>
+        HomePage
+      </NavLink>
+      <NavLink to='/loggedin/analyzeData' style={navLinkStyles}>
+        AnalyzeData
+      </NavLink>
+      <NavLink to='/loggedin/analyzeHistory' style={navLinkStyles}>
+        AnalysisHistory
+      </NavLink>
+      <NavLink to='/loggedin/manageDataModels' style={navLinkStyles}>
         ManageDataModels
       </NavLink>
-      <NavLink to='/manageUsers' style={navLinkStyles}>
+      <NavLink to='/loggedin/manageUsers' style={navLinkStyles}>
         ManageUsers
       </NavLink>
       {auth.user && (
-        <NavLink to='/loginForm' style={navLinkStyles} onClick={handleLogout}>
+        <NavLink to='/' style={navLinkStyles} onClick={handleLogout}>
           Logout
         </NavLink>
       )}

@@ -7,7 +7,7 @@ export const RequireAdminAuth = ({ children }) => {
   console.log(auth.user)
   console.log(auth.role)
   if (!auth.user) {
-    return <Navigate to='/loginForm' state={{ path: location.pathname }} />
+    return <Navigate to='/' state={{ path: location.pathname }} />
   }
   else {
     if (auth.role == 0)

@@ -31,7 +31,10 @@ export const EditModel = () => {
               headers: { "Content-Type": "multipart/form-data" },
             });
 		console.log(response.data);
-        navigate("/manageDataModels");
+        if (response.status == 200) 
+        alert("Model updated successfully!"); 
+        else alert("Model not updated.Please try again!");  
+        navigate("/loggedin/manageDataModels");
 	}
     catch(error) {
         console.log(error);
@@ -41,7 +44,7 @@ export const EditModel = () => {
     }
 
     const navigateToManageModels = () => {
-		navigate('/manageDataModels');
+		navigate('/loggedin/manageDataModels');
 	}
 
     useEffect(() => {

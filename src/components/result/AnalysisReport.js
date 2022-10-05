@@ -22,7 +22,7 @@ export const AnalysisReport = () => {
     }
 
     const navigateToAnalyzisData = () => {
-		// navigate('/analyzeData');
+		// navigate('/loggedin/analyzeData');
         navigate(-1);
 	}
  
