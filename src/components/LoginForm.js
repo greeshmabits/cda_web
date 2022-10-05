@@ -25,7 +25,7 @@ function LoginForm() {
         setErrMsg('');
     }, [details.username, details.password])
 
-    const redirectPath = location.state?.path || '/'
+    const redirectPath = location.state?.path || '/loggedin'
 
     const handleLogin = async (e) => {
         e.preventDefault();

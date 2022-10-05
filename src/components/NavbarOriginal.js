@@ -2,7 +2,7 @@ import { NavLink,useNavigate } from 'react-router-dom'
 import React from 'react';
 import { useAuth } from './util/auth';
 
-export const NavbarGeneral = () => {
+export const Navbar = () => {
   const auth = useAuth();
   const navigate = useNavigate();
   const navLinkStyles = ({ isActive }) => {
@@ -19,41 +19,12 @@ export const NavbarGeneral = () => {
 
   return (
     <nav className='primary-nav'>
-      <NavLink to='/loggedin' style={navLinkStyles}>
-        HomePage
-      </NavLink>
-      <NavLink to='/loggedin/analyzeData' style={navLinkStyles}>
-        AnalyzeData
-      </NavLink>
-      <NavLink to='/loggedin/analyzeHistory' style={navLinkStyles}>
-        AnalyzeHistory
-      </NavLink>
-      {auth.user && (
-        <NavLink to='/' style={navLinkStyles} onClick={handleLogout}>
-          Logout
+{/* 
+      {!auth.user && (
+        <NavLink to='/loginForm' style={navLinkStyles}>
+          Login
         </NavLink>
-      )}
-    </nav>
-  )
-}
-
-export const NavbarAdmin = () => {
-  const auth = useAuth();
-  const navigate = useNavigate();
-  const navLinkStyles = ({ isActive }) => {
-    return {
-      fontWeight: isActive ? 'bold' : 'normal',
-      textDecoration: isActive ? 'none' : 'underline'
-    }
-  }
-
-  const handleLogout = () => {
-    auth.logout()
-    navigate('/loginForm');
-  }
-
-  return (
-    <nav className='primary-nav'>
+      )} */}
       <NavLink to='/loggedin' style={navLinkStyles}>
         HomePage
       </NavLink>

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import React from 'react';
+import React,{useState} from 'react';
 import {Button,Table,Popconfirm} from "antd";
 import {EditTwoTone,DeleteTwoTone} from '@ant-design/icons'
 import useFetch from './util/useFetch';
@@ -10,11 +10,15 @@ import { getModelTypeName } from './util/common';
 export const ManageDataModels = () => {
 	const navigate = useNavigate()
 	const {data,loading,error}=useFetch("http://52.66.217.199:9080/models/");
+	const [value,setValue] = useState();
 
 	if (loading) return <h1>Loading...</h1>;
 
 	if (error) console.log(error);
 
+	const refresh = ()=>{
+		setValue({});
+	}
 	const columns =[
 		{
 			key:'1',
@@ -58,7 +62,8 @@ export const ManageDataModels = () => {
 	const deleteModel = (modelnameToDelete,e) =>{
 		e.preventDefault();
 		axios.delete(`http://52.66.217.199:9080/model/${modelnameToDelete}`).then((res) => {console.log('Deleting model ',res); if (res.status == 200) alert("Deleted model "+modelnameToDelete+" successfully!"); else alert("Model not deleted.Please try again!");}).catch(err => console.log(err))
-		navigate('/manageDataModels');
+		// navigate('/manageDataModels');
+		refresh();
 	}
 
 	const navigateToAddModel = () => {
