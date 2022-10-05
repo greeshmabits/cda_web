@@ -2,6 +2,7 @@ import React ,{useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {Button} from "antd";
 import axios from 'axios';
+import {all_models_url} from '../config/configuration';
 
 const AddModel = () => {
     const navigate = useNavigate()
@@ -23,7 +24,7 @@ const AddModel = () => {
             const response = await axios({
               method: "post",
               timeout: 9000,
-              url: "http://52.66.217.199:9080/models/",
+              url: `${all_models_url}`,
               data: formData,
               headers: { "Content-Type": "multipart/form-data" },
             });

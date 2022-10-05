@@ -2,7 +2,7 @@ import React ,{useEffect, useState} from 'react';
 import {useNavigate,useParams} from "react-router-dom";
 import {Button} from "antd";
 import axios from 'axios';
-
+import {single_model_url} from '../config/configuration';
 
 export const EditModel = () => {
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ export const EditModel = () => {
             const response = await axios({
               method: "put",
               timeout: 9000,
-              url: `http://52.66.217.199:9080/model/${modelname}`,
+              url: `${single_model_url}${modelname}`,
               data: formData,
               headers: { "Content-Type": "multipart/form-data" },
             });
@@ -52,7 +52,7 @@ export const EditModel = () => {
     },[]);
 
     const loadDetails= async () => {
-        const result= await axios.get(`http://52.66.217.199:9080/model/${modelname}`);
+        const result= await axios.get(`${single_model_url}${modelname}`);
         setDetails(result.data);
     }
   return (

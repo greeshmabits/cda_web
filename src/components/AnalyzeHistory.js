@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import useFetch from './util/useFetch';
-import axios from 'axios';
 
 export const AnalyzeHistory = () => {
 	const navigate = useNavigate();

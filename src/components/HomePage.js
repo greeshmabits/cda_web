@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import React from 'react';
 import { useAuth } from './util/auth';
-import { Navbar } from './Navbar'
 
 export const HomePage = () => {
   const navigate = useNavigate();

@@ -38,8 +38,8 @@ export const AnalyzeData = () => {
         const id = response.data.id
         const result= await axios.get(`http://52.66.217.199:9080/analyze/${id}`);
         setAnalyzeData(result.data);
-        console.log("Analyzer output after analyze is "+result.data);
-        if (result.status == 200)
+        console.log("Analyzer output after analyze is "+analyzeData);
+        if (result.status === 200)
           navigate(`/loggedin/result/${id}`, {replace: true});
         else
           alert("Error processing the request.Please try again!")

@@ -2,14 +2,15 @@ import React ,{useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {Button} from "antd";
 import axios from 'axios';
+import {all_users_url} from '../config/configuration';
 
 const AddUser = () => {
     const navigate = useNavigate()
     const [details,setDetails] = useState({username:"",firstname:"",lastname: "",usertype:"",email:"",password:""});
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
 		e.preventDefault();
-		axios.post('http://52.66.217.199:9080/users/', details).then((res) => {console.log('Posting data',res); if (res.status == 201) 
+		await axios.post(`${all_users_url}`, details).then((res) => {console.log('Posting data',res); if (res.status == 201) 
         alert("User created successfully!"); else alert("User not created.Please try again!");}) 
         .catch(err => console.log(err));           
         navigate("/loggedin/manageUsers");

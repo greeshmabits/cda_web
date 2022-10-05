@@ -25,6 +25,11 @@ function LoginForm() {
         setErrMsg('');
     }, [details.username, details.password])
 
+    
+	if (loading) return <h1>Loading...</h1>;
+
+	if (errMsg) console.log(errMsg);
+    
     const redirectPath = location.state?.path || '/loggedin'
 
     const handleLogin = async (e) => {
