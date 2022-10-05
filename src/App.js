@@ -38,7 +38,7 @@ function App() {
               <Route path='/loggedin/result/:id' element={<RequireAuth><AnalysisReport /></RequireAuth>} />
               <Route path='/loggedin/analyzeHistory' element={<RequireAuth><AnalyzeHistory /></RequireAuth>} />
               <Route path='/loggedin/manageDataModels' element={<RequireAdminAuth><ManageDataModels /></RequireAdminAuth>} ></Route>
-              <Route path='/loggedin/manageDataModels/add' element={<AddModel/>} />
+              <Route path='/loggedin/manageDataModels/add' element={<RequireAdminAuth><AddModel/></RequireAdminAuth>} />
               <Route path='/loggedin/manageDataModels/edit/:modelname' element={<RequireAdminAuth><EditModel /></RequireAdminAuth>} /> 
               <Route path='/loggedin/manageUsers' element={<RequireAdminAuth><ManageUsers /></RequireAdminAuth>} />
               <Route path='/loggedin/manageUsers/user/add' element={<RequireAdminAuth><AddUser /></RequireAdminAuth>} />

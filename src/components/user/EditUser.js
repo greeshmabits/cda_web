@@ -11,10 +11,21 @@ export const EditUser = () => {
 
     const [details,setDetails] = useState({username:"",firstname:"",lastname: "",usertype:"",email:"",password:""});
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
 		e.preventDefault();
-		axios.put(`http://52.66.217.199:9080/user/${username}`, details).then(res => console.log('Editing data',res)).catch(err => console.log(err));
-        navigate("/loggedin/manageUsers");
+        try{
+            const response =await axios.put(`http://52.66.217.199:9080/user/${username}`, details);
+            console.log(response);
+            if (response.status == 200) 
+            alert("User updated successfully!"); 
+            else alert("User not updated.Please try again!");  
+            navigate("/loggedin/manageUsers");
+        }
+		
+        catch(error) {
+            console.log(error);
+            alert("User update processing error -"+error);
+          }
 	}
 
     const navigateToManageUsers = () => {
