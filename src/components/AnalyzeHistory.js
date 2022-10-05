@@ -16,7 +16,7 @@ export const AnalyzeHistory = () => {
 		console.log("above is the run id");
 		
 		const id = el.title ;
-		navigate(`/analyzeData/result/${id}`, {replace: true});
+		navigate(`/loggedin/result/${id}`, {replace: true});
 	  }
 
 	  if (loading) return <h1>Loading...</h1>;

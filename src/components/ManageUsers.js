@@ -55,7 +55,7 @@ export const ManageUsers = () => {
 
 	const editUser = (username,e) => {
 		e.preventDefault();
-		navigate(`/user/edit/${username}`, {replace: true});
+		navigate(`/loggedin/manageUsers/user/edit/${username}`, {replace: true});
 
 	}
 
@@ -66,7 +66,7 @@ export const ManageUsers = () => {
 	}
 
 	const navigateToAddUser = () => {
-		navigate('/user/add', {replace: true});
+		navigate('/loggedin/manageUsers/user/add', {replace: true});
 	}
 
 

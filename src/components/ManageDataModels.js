@@ -55,19 +55,19 @@ export const ManageDataModels = () => {
 
 	const editModel = (modelname,e) => {
 		e.preventDefault();
-		navigate(`/model/edit/${modelname}`, {replace: true});
+		navigate(`/loggedin/manageDataModels/edit/${modelname}`, {replace: true});
 
 	}
 
 	const deleteModel = (modelnameToDelete,e) =>{
 		e.preventDefault();
 		axios.delete(`http://52.66.217.199:9080/model/${modelnameToDelete}`).then((res) => {console.log('Deleting model ',res); if (res.status == 200) alert("Deleted model "+modelnameToDelete+" successfully!"); else alert("Model not deleted.Please try again!");}).catch(err => console.log(err))
-		// navigate('/manageDataModels');
+		// navigate('/loggedin/manageDataModels');
 		refresh();
 	}
 
 	const navigateToAddModel = () => {
-		navigate('/model/add', {replace: true});
+		navigate('/loggedin/manageDataModels/add', {replace: true});
 	}
 
 	return (

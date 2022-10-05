@@ -30,8 +30,8 @@ const AddModel = () => {
             console.log(response.data);
 		if (response.status == 201) 
         alert("Model created successfully!"); 
-        else alert("Model not created.Please try again!");          
-        navigate("/manageDataModels");
+    else alert("Model not created.Please try again!");          
+    navigate("/loggedin/manageDataModels");
 	}
 
     
@@ -43,7 +43,7 @@ const AddModel = () => {
       }
 
     const navigateToManageModels = () => {
-		navigate('/manageDataModels');
+		navigate('/loggedin/manageDataModels');
 	}
 
   return (

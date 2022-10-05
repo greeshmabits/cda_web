@@ -14,7 +14,7 @@ export const NavbarGeneral = () => {
 
   const handleLogout = () => {
     auth.logout()
-    navigate('/loginForm');
+    navigate('/');
   }
 
   return (
@@ -26,7 +26,7 @@ export const NavbarGeneral = () => {
         AnalyzeData
       </NavLink>
       <NavLink to='/loggedin/analyzeHistory' style={navLinkStyles}>
-        AnalyzeHistory
+        AnalysisHistory
       </NavLink>
       {auth.user && (
         <NavLink to='/' style={navLinkStyles} onClick={handleLogout}>
@@ -49,7 +49,7 @@ export const NavbarAdmin = () => {
 
   const handleLogout = () => {
     auth.logout()
-    navigate('/loginForm');
+    navigate('/');
   }
 
   return (
@@ -61,7 +61,7 @@ export const NavbarAdmin = () => {
         AnalyzeData
       </NavLink>
       <NavLink to='/loggedin/analyzeHistory' style={navLinkStyles}>
-        AnalyzeHistory
+        AnalysisHistory
       </NavLink>
       <NavLink to='/loggedin/manageDataModels' style={navLinkStyles}>
         ManageDataModels

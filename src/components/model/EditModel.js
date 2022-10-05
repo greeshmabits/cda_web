@@ -34,7 +34,7 @@ export const EditModel = () => {
         if (response.status == 200) 
         alert("Model updated successfully!"); 
         else alert("Model not updated.Please try again!");  
-        navigate("/manageDataModels");
+        navigate("/loggedin/manageDataModels");
 	}
     catch(error) {
         console.log(error);
@@ -44,7 +44,7 @@ export const EditModel = () => {
     }
 
     const navigateToManageModels = () => {
-		navigate('/manageDataModels');
+		navigate('/loggedin/manageDataModels');
 	}
 
     useEffect(() => {

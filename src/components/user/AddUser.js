@@ -12,11 +12,11 @@ const AddUser = () => {
 		axios.post('http://52.66.217.199:9080/users/', details).then((res) => {console.log('Posting data',res); if (res.status == 201) 
         alert("User created successfully!"); else alert("User not created.Please try again!");}) 
         .catch(err => console.log(err));           
-        navigate("/manageUsers");
+        navigate("/loggedin/manageUsers");
 	}
 
     const navigateToManageUsers = () => {
-		navigate('/manageUsers');
+		navigate('/loggedin/manageUsers');
 	}
 
   return (
