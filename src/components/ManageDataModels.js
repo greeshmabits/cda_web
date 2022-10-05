@@ -1,24 +1,37 @@
 import { useNavigate } from 'react-router-dom'
-import React,{useState} from 'react';
+import React,{useState,useEffect,useReducer} from 'react';
 import {Button,Table,Popconfirm} from "antd";
-import {EditTwoTone,DeleteTwoTone} from '@ant-design/icons'
-import useFetch from './util/useFetch';
+import {EditTwoTone,DeleteTwoTone} from '@ant-design/icons';
 import axios from 'axios';
 import { getModelTypeName } from './util/common';
+import {single_model_url,all_models_url} from './config/configuration';
 
 
 export const ManageDataModels = () => {
-	const navigate = useNavigate()
-	const {data,loading,error}=useFetch("http://52.66.217.199:9080/models/");
-	const [value,setValue] = useState();
+	const navigate = useNavigate();
+	const [data,setData] = useState(null);
+    const [loading,setLoading] = useState(false);
+    const [error,setError] = useState(null);
+	const [reducer,forceUpdate] = useReducer(x=>x+1,0);
+
+    useEffect( () => {
+        setLoading(true);
+         axios.get(all_models_url)
+             .then((response) => {
+                setData(response.data);
+             })
+             .catch((err) => {
+                setError(err);
+             })
+             .finally(() => {
+                setLoading(false);
+             });
+    }, [reducer]);
 
 	if (loading) return <h1>Loading...</h1>;
 
 	if (error) console.log(error);
 
-	const refresh = ()=>{
-		setValue({});
-	}
 	const columns =[
 		{
 			key:'1',
@@ -59,11 +72,25 @@ export const ManageDataModels = () => {
 
 	}
 
-	const deleteModel = (modelnameToDelete,e) =>{
-		e.preventDefault();
-		axios.delete(`http://52.66.217.199:9080/model/${modelnameToDelete}`).then((res) => {console.log('Deleting model ',res); if (res.status == 200) alert("Deleted model "+modelnameToDelete+" successfully!"); else alert("Model not deleted.Please try again!");}).catch(err => console.log(err))
-		// navigate('/loggedin/manageDataModels');
-		refresh();
+	const deleteModel = async (modelnameToDelete,e) =>{
+		try {
+			e.preventDefault();
+			const res= await axios.delete(`${single_model_url}${modelnameToDelete}`);
+			if (res.status==200) {
+				console.log('Deleting model ',res); 
+				forceUpdate();
+				alert("Deleted model "+modelnameToDelete+" successfully!"); 
+				}
+			else {
+				alert("Model not deleted.Please try again!");
+				}
+		}
+			
+		catch(error) {
+			console.log(error);
+			alert("Model not deleted.Please try again!");
+		}
+
 	}
 
 	const navigateToAddModel = () => {

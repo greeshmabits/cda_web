@@ -2,6 +2,8 @@ import React ,{useEffect, useState} from 'react';
 import {useNavigate,useParams} from "react-router-dom";
 import {Button} from "antd";
 import axios from 'axios';
+import {single_user_url} from '../config/configuration';
+
 
 
 export const EditUser = () => {
@@ -14,7 +16,7 @@ export const EditUser = () => {
     const submitHandler = async (e) => {
 		e.preventDefault();
         try{
-            const response =await axios.put(`http://52.66.217.199:9080/user/${username}`, details);
+            const response =await axios.put(`${single_user_url}${username}`, details);
             console.log(response);
             if (response.status == 200) 
             alert("User updated successfully!"); 
@@ -37,7 +39,7 @@ export const EditUser = () => {
     },[]);
 
     const loadDetails= async () => {
-        const result= await axios.get(`http://52.66.217.199:9080/user/${username}`);
+        const result= await axios.get(`${single_user_url}${username}`);
         setDetails(result.data);
     }
   return (

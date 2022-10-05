@@ -1,9 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Home, WelcomePage } from './components/WelcomePage'
+import {WelcomePage } from './components/WelcomePage'
 import {HomePage} from './components/HomePage'
 import LoginForm from './components/LoginForm';
-import { Navbar } from './components/Navbar'
 import { AnalyzeData } from './components/AnalyzeData'
 import { AnalyzeHistory } from './components/AnalyzeHistory'
 import { ManageDataModels } from './components/ManageDataModels'
@@ -22,9 +21,7 @@ import { PermissionDenied } from './components/user/PermissionDenied';
 
 
 
-function App() {
-
- 
+function App() { 
   return (
     <div className="App">
       <>
