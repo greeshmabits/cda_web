@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState,useRef,useEffect} from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from './util/auth';
-
+import {single_user_url} from './config/configuration';
 
 function LoginForm() {
     const navigate = useNavigate()
@@ -10,8 +10,6 @@ function LoginForm() {
     const auth = useAuth()
     const userRef = useRef();
     const errRef = useRef();
-
-    const [data,setData]=useState(null);
     const [loading,setLoading] = useState(false);
     const [details,setDetails] = useState({username:"",password:""});
     const [errMsg, setErrMsg] = useState('');
@@ -36,13 +34,10 @@ function LoginForm() {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await  axios.get(`http://52.66.217.199:9080/user/${details.username}`)
-            .then((response) => {
-               setData(response.data);
-            });
-            const password = data?.password;
-            const roles = data?.usertype;
-            if (details.password == password) {
+            const response = await  axios.get(`${single_user_url}${details.username}`);
+            const password = response.data.password;
+            const roles = response.data.usertype;
+            if (details.password === password) {
                 auth.login(details.username,roles);
                 navigate(redirectPath, { replace: true });
             }
@@ -59,7 +54,7 @@ function LoginForm() {
             } else if (err.response?.status === 401) {
                 setErrMsg('Unauthorized');
             } else {
-                setErrMsg('Login Failed');
+                setErrMsg('Login Failed.Username not found!');
             }
             errRef.current.focus();
         }
