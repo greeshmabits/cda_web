@@ -86,7 +86,7 @@ function LoginForm() {
                 <input type="password" name="password" id="password" onChange={e => setDetails({...details, password : e.target.value})} value={details.password} required/>
             </div>
             <div className="form-buttons">
-            <input type="submit" value="Login"/>
+            <input type="submit" id="submit" value="Login"/>
             <input type="reset" value="Reset" onClick={handleReset} />  
             </div>
         </div>
