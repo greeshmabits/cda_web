@@ -11,7 +11,7 @@ const AddUser = () => {
     const submitHandler = async (e) => {
 		e.preventDefault();
 		await axios.post(`${all_users_url}`, details).then((res) => {console.log('Posting data',res); if (res.status == 201) 
-        alert("User created successfully!"); else alert("User not created.Please try again!");}) 
+        alert("User created successfully!"); else alert("User creation failed.Please try again!");}) 
         .catch(err => console.log(err));           
         navigate("/loggedin/manageUsers");
 	}
